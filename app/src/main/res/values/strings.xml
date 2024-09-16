@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Mvvm&amp;Room</string>
+    <string name="retry">Click Here To Retry</string>
+</resources>
