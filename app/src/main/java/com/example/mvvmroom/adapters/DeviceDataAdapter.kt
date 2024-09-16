@@ -32,7 +32,7 @@ class DeviceDataAdapter(
         val data = deviceModelList[position]
         var text = ""
         deviceName.text = data.name
-        if (data.data != null){
+        if (data.data != null) {
             text = formatDeviceData(data.data)
         } else {
             text = "No data available"
@@ -41,7 +41,7 @@ class DeviceDataAdapter(
 
         val isExpanded = position == expandedPosition
         expandedView.visibility = if (isExpanded) View.VISIBLE else View.GONE
-        deviceName.setCompoundDrawablesWithIntrinsicBounds(0,0, if (isExpanded) R.drawable.baseline_arrow_drop_up_24 else R.drawable.baseline_arrow_drop_down_24, 0)
+        setArrowIcon(isExpanded,holder)
         cardLayout.setOnClickListener {
             if (isExpanded) {
                 expandedPosition = -1
@@ -72,4 +72,14 @@ class DeviceDataAdapter(
 
         return stringBuilder.toString().trim()
     }
+
+    private fun setArrowIcon(isExpanded: Boolean,holder:ViewHolder) {
+        holder.binding.deviceName.setCompoundDrawablesWithIntrinsicBounds(
+            0,
+            0,
+            if (isExpanded) R.drawable.baseline_arrow_drop_up_24 else R.drawable.baseline_arrow_drop_down_24,
+            0
+        )
+    }
+
 }
